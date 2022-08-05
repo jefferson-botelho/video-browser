@@ -14,11 +14,8 @@
 import { computed } from 'vue'
 import store from '../store'
 
-const video = store.getters['getSelectedVideo'];
-
-const videoUrl = computed(() => { 
-  return store.getters['getEmbededUrl'] 
-  })
+const video = computed(() => store.getters['getSelectedVideo'])
+const videoUrl = computed(() => store.getters['getEmbededUrl'])
 
 </script>
 

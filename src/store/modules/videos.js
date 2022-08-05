@@ -7,7 +7,7 @@ const state = () => ({
 
 const getters = {
   getVideos: state => state.videos,
-  getSelectedVideo: state => state.selectVideo,
+  getSelectedVideo: state => state.selectedVideo,
   getEmbededUrl: state => `https://www.youtube.com/embed/${state.selectedVideo.id.videoId}`
 };
 
@@ -26,7 +26,6 @@ const actions = {
   },
 
   searchVideos: async ({ commit }, searchTerm) => {
-    console.log(searchTerm)
     const videos = await search(searchTerm);
     commit('setVideos', videos)
   }

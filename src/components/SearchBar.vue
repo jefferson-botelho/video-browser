@@ -1,18 +1,19 @@
 <template>
   <div class="search-bar">
     <form @submit.prevent="onSubmit">
-      <input class="form-control col-8"/>
+      <input name="term" class="form-control col-8"/>
       <input type="submit" value="search" class="btn btn-primary"/>
   </form> 
   </div>
 </template>
 
 <script setup>
-import store from '../store'
+import { defineEmits } from 'vue';
+
+const emit = defineEmits(['termChange'])
 
 const onSubmit = (e) => {
-    console.log(e.target)
-    store.dispatch('searchVideos', e.target.value)
+  emit('termChange', e.target['term'].value);
 }
 </script>
 

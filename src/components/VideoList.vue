@@ -17,6 +17,9 @@
 
 <script setup>
 import store from '../store'
+import { defineProps } from 'vue';
+
+defineProps(['videos'])
 
 const onVideoSelect = (video) => {
   store.dispatch('selectVideo', video);
@@ -24,26 +27,9 @@ const onVideoSelect = (video) => {
 
 const thumbnailUrl = (video) => {
   return video.snippet.thumbnails.default.url
-  };
+};
 
 </script>
-
-<!-- <script setup>
-import { defineProps, defineEmits } from 'vue'
-
-defineProps(['videos']);
-
-const emit = defineEmits(['videoSelect']);
-
-const onVideoSelect = (video) => {
-  emit('videoSelect', video)
-  };
-
-const thumbnailUrl = (video) => {
-  return video.snippet.thumbnails.default.url
-  };
-
-</script> -->
 
 <style scoped>
   .media-body {
