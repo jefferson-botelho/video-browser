@@ -10,19 +10,18 @@
   </ul>
 </template>
 
-<script>
+<script setup>
 import VideoListItem from './VideoListItem.vue';
+import { defineProps, defineEmits } from 'vue'
 
-export default {
-    name: "VideoList",
-    components: { VideoListItem },
-    props: ["videos"],
-    methods: {
-      onVideoSelect(video) {
-        this.$emit('videoSelect', video)
-      }
-    }
-}
+defineProps(['videos']);
+
+const emit = defineEmits(['videoSelect']);
+
+const onVideoSelect = (video) => {
+  emit('videoSelect', video)
+  };
+
 </script>
 
 <style>

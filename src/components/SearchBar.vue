@@ -7,14 +7,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SearchBar',
-  methods: {
-    onSubmit(event) {
-      this.$emit('searchTerm', event.target.value)
-    }
-  }
+<script setup>
+// eslint-disable-next-line no-undef
+const emit = defineEmits(['searchTerm'])
+
+const onSubmit = (e) => {
+  emit('searchTerm', e.target.value);
 }
 </script>
 
