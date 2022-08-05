@@ -11,12 +11,13 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue'
+import { computed } from 'vue'
+import store from '../store'
 
-const props = defineProps(['video']);
+const video = store.getters['getSelectedVideo'];
 
 const videoUrl = computed(() => { 
-  return `https://www.youtube.com/embed/${props.video.id.videoId}` 
+  return store.getters['getEmbededUrl'] 
   })
 
 </script>

@@ -8,11 +8,11 @@
 </template>
 
 <script setup>
-// eslint-disable-next-line no-undef
-const emit = defineEmits(['searchTerm'])
+import store from '../store'
 
 const onSubmit = (e) => {
-  emit('searchTerm', e.target.value);
+    console.log(e.target)
+    store.dispatch('searchVideos', e.target.value)
 }
 </script>
 
