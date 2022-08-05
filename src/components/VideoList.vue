@@ -17,9 +17,9 @@
 
 <script setup>
 import store from '../store'
-import { defineProps } from 'vue';
+import { computed } from 'vue';
 
-defineProps(['videos'])
+const videos = computed(() => store.getters['getVideos']);
 
 const onVideoSelect = (video) => {
   store.dispatch('selectVideo', video);
@@ -28,7 +28,6 @@ const onVideoSelect = (video) => {
 const thumbnailUrl = (video) => {
   return video.snippet.thumbnails.default.url
 };
-
 </script>
 
 <style scoped>

@@ -8,12 +8,10 @@
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
-
-const emit = defineEmits(['termChange'])
+import store from '../store'
 
 const onSubmit = (e) => {
-  emit('termChange', e.target['term'].value);
+  store.dispatch('searchVideos', e.target['term'].value);
 }
 </script>
 
