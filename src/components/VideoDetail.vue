@@ -1,7 +1,7 @@
 <template>
   <div v-if="video" class="col-md-8">
     <div class="ratio ratio-16x9">
-      <iframe :src="videoUrl" allowfullscreen></iframe>
+      <iframe :src="videoUrl" allowfullscreen />
     </div>
     <div class="details">
       <h4>{{ video.snippet.title }}</h4>
@@ -10,12 +10,14 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
-import store from '../store'
+import { videosStore } from '@/stores/videos';
 
-const video = computed(() => store.getters['getSelectedVideo'])
-const videoUrl = computed(() => store.getters['getEmbededUrl'])
+const store = videosStore()
+
+const video = computed(() => store.getSelectedVideo)
+const videoUrl = computed(() => store.getEmbededUrl)
 
 </script>
 

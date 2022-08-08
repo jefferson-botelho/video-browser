@@ -1,12 +1,12 @@
 <template>
-  <ul class="list-group col-md-4" >
+  <ul class="list-group col-md-4">
     <div 
-    v-for="video in videos"
-    :video="video"
-    :key="video.etag"
+      v-for="video in videos"
+      :key="video.etag"
+      :video="video"
     >
       <li class="list-group-item media" @click="onVideoSelect(video)">
-        <img class="mr-3" :src="thumbnailUrl(video)" />
+        <img class="mr-3" :src="thumbnailUrl(video)">
         <div class="media-body">
           {{ video.snippet.title }}
         </div>
@@ -15,18 +15,20 @@
   </ul>
 </template>
 
-<script setup>
-import store from '../store'
+<script setup lang="ts">
 import { computed } from 'vue';
+import { videosStore } from '@/stores/videos';
 
-const videos = computed(() => store.getters['getVideos']);
+const store = videosStore()
 
-const onVideoSelect = (video) => {
-  store.dispatch('selectVideo', video);
+const videos = computed(() => store.getVideos);
+
+const onVideoSelect = (video: any) => {
+    store.selectVideo(video);
 }
 
-const thumbnailUrl = (video) => {
-  return video.snippet.thumbnails.default.url
+const thumbnailUrl = (video: any) => {
+    return video.snippet.thumbnails.default.url
 };
 </script>
 

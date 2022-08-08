@@ -1,17 +1,19 @@
 <template>
   <div class="search-bar">
     <form @submit.prevent="onSubmit">
-      <input name="term" class="form-control col-8"/>
-      <input type="submit" value="search" class="btn btn-primary"/>
-  </form> 
+      <input name="term" class="form-control col-8">
+      <input type="submit" value="search" class="btn btn-primary">
+    </form> 
   </div>
 </template>
 
-<script setup>
-import store from '../store'
+<script setup lang="ts">
+import { videosStore } from '@/stores/videos';
 
-const onSubmit = (e) => {
-  store.dispatch('searchVideos', e.target['term'].value);
+const store = videosStore()
+
+const onSubmit = (e: any) => {
+    store.searchVideos(e.target['term'].value);
 }
 </script>
 
